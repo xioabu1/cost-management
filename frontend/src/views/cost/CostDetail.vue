@@ -1,5 +1,5 @@
 <template>
-  <div class="cost-detail-page review-detail-content"> <!-- 应用审核详情样式容器 -->
+  <div class="cost-detail-page"> <!-- 独立详情页容器，不使用弹窗的截断样式 -->
     <CostPageHeader :title="`报价单详情 ${quotation.quotation_no ? '- ' + quotation.quotation_no : ''}`" :show-back="true" @back="$router.back()">
       <template #after-title>
          <div class="flex items-center gap-2 ml-4">
@@ -22,9 +22,9 @@
       </template>
     </CostPageHeader>
     
-    <div class="mt-6" v-loading="loading">
+    <div class="mt-3" v-loading="loading">
       <!-- Main Content Layout -->
-      <div class="max-w-[1600px] mx-auto px-6 py-6" v-if="quotation && quotation.id">
+      <div class="max-w-[1600px] mx-auto px-6 py-3" v-if="quotation && quotation.id">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           
           <!-- Left Column (Main Details) -->
@@ -41,10 +41,10 @@
                  Note: We pass the items directly. 
                  CostDetailTabs computes subtotals internally based on these arrays.
                -->
-               <CostDetailTabs 
-                 :materials="items.materials"
-                 :processes="items.processes"
-                 :packaging="items.packaging"
+               <CostDetailTabs
+                 :materials="items.material?.items || []"
+                 :processes="items.process?.items || []"
+                 :packaging="items.packaging?.items || []"
                  :process-coefficient="quotation.process_coefficient"
                  :read-only="true"
                />
@@ -53,9 +53,11 @@
 
           <!-- Right Column (Sticky Summary + Sales Info) -->
           <div class="lg:col-span-4 sticky top-24">
-            <CostSummaryPanel 
-              :quotation="quotation" 
-              :items="items"
+            <CostSummaryPanel
+              :quotation="quotation"
+              :exchange-rate="calculation?.exchangeRate"
+              :profit-tiers="allProfitTiers"
+              :overhead-rate="calculation?.overheadRate"
             />
           </div>
         </div>
@@ -136,5 +138,10 @@ onMounted(async () => {
 </script>
 
 <style scoped>
-/* No extra styles needed */
+/* 详情页独立样式，不受弹窗样式限制 */
+.cost-detail-page {
+  min-height: 100vh;
+  background: #f8fafc;
+  padding-bottom: 40px;
+}
 </style>
