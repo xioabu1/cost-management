@@ -20,7 +20,12 @@
       "Bash(node -c:*)",
       "Bash(npm run build)",
       "Bash(npm run build:*)",
-      "Bash(cd:*)"
+      "Bash(cd:*)",
+      "Bash(git restore:*)",
+      "Bash(git checkout:*)",
+      "Skill(claude-hud:configure)",
+      "Bash(claude:*)",
+      "Bash(cmd /c echo:*)"
     ]
   }
 }

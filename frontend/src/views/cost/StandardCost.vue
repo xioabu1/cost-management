@@ -12,9 +12,10 @@
     <el-dialog
       v-model="historyDialogVisible"
       title="标准成本历史版本"
-      width="800px"
+      width="900px"
       destroy-on-close
       append-to-body
+      class="minimal-dialog-auto history-dialog"
     >
       <el-table :data="historyList" border v-loading="historyLoading">
         <el-table-column prop="version" label="版本" width="80" />
@@ -34,7 +35,7 @@
             {{ formatDateTime(row.created_at) }}
           </template>
         </el-table-column>
-        <el-table-column label="状态" width="100">
+        <el-table-column label="状态" width="140">
           <template #default="{ row }">
             <StatusBadge type="version_status" :value="row.is_current ? 'current' : 'history'" />
           </template>

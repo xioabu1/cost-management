@@ -3,8 +3,7 @@
     :model-value="modelValue"
     :title="isEdit ? '编辑工序配置' : '新增工序配置'"
     width="850px"
-    top="5vh"
-    class="process-config-dialog"
+    class="minimal-dialog"
     destroy-on-close
     append-to-body
     :close-on-click-modal="false"

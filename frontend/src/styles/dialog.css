@@ -66,3 +66,11 @@
   height: auto !important;
   max-height: 90vh !important; /* 最大不超过 90% */
 }
+
+/* --- 变体 3: 固定中等高度 (Fixed Medium Height) --- */
+/* 适用于: 标准成本历史版本等列表弹窗，避免内容少时过于居中 */
+/* 调用方式: <el-dialog class="minimal-dialog-auto history-dialog" ...> */
+.minimal-dialog-auto.history-dialog.el-dialog {
+  height: 70vh !important;
+  max-height: 800px !important;
+}

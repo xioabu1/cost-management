@@ -8,7 +8,7 @@
     :before-close="handleBeforeClose"
     destroy-on-close
     append-to-body
-    class="review-dialog"
+    class="minimal-dialog-auto"
   >
     <div v-loading="loading" class="review-detail-content">
       <template v-if="quotationDetail">

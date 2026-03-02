@@ -3,7 +3,7 @@
     v-model="visible" 
     :title="type === 'packaging' ? '包材配置详情' : '工序配置详情'" 
     width="800px" 
-    class="premium-dialog" 
+    class="minimal-dialog-auto" 
     append-to-body
     destroy-on-close
     :close-on-click-modal="false"
