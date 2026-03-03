@@ -1,7 +1,7 @@
 <template>
   <el-dialog
     :model-value="modelValue"
-    :title="`⚠️ 退回报价单  ${quotation?.quotation_no || ''}`"
+    :title="`⚠️ 退回成本分析  ${quotation?.quotation_no || ''}`"
     width="500px"
     :close-on-click-modal="false"
     :before-close="handleBeforeClose"
@@ -10,7 +10,7 @@
     <div class="reject-content">
       <el-divider />
       
-      <!-- 报价单摘要 -->
+      <!-- 成本分析摘要 -->
       <div class="summary-info">
         <div class="info-line"><span class="label">客户名称:</span><span class="value">{{ quotation?.customer_name }}</span></div>
         <div class="info-line"><span class="label">客户地区:</span><span class="value">{{ quotation?.customer_region || '-' }}</span></div>
@@ -44,7 +44,7 @@
 
       <!-- 提示 -->
       <div class="hint-text">
-        💡 提示：退回后业务员可修改报价单并重新提交
+        💡 提示：退回后业务员可修改成本分析并重新提交
       </div>
     </div>
 

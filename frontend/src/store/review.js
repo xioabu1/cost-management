@@ -211,22 +211,22 @@ export const useReviewStore = defineStore('review', {
     },
 
     /**
-     * 删除报价单（仅管理员）
+     * 删除成本分析（仅管理员）
      */
     async deleteQuotation(id) {
       this.loading = true
       try {
         const response = await request.delete(`/review/${id}`)
-        
+
         if (response.success) {
           // 从列表中移除
           this.pendingList = this.pendingList.filter(q => q.id !== id)
           this.approvedList = this.approvedList.filter(q => q.id !== id)
         }
-        
+
         return response
       } catch (error) {
-        logger.error('删除报价单失败:', error)
+        logger.error('删除成本分析失败:', error)
         throw error
       } finally {
         this.loading = false

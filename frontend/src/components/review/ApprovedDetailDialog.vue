@@ -1,7 +1,7 @@
 <template>
   <el-dialog
     :model-value="modelValue"
-    title="报价单详情"
+    title="成本分析详情"
     width="900px"
     top="5vh"
     :close-on-click-modal="false"

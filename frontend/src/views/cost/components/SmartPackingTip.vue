@@ -4,8 +4,8 @@
     <div class="tip-content">
       <div class="tip-title">{{ title }}</div>
       <div v-if="tipType === 'domestic'">
-        <div>当前数量: {{ quantity }} pcs ({{ (quantity / pcsPerCarton).toFixed(1) }}箱)</div>
-        <div>建议数量: <strong>{{ suggestedQuantity }} pcs</strong> ({{ suggestedCartons }}箱) 以达到整数箱</div>
+        <div>当前数量: {{ quantity }} {{ quantity === 1 ? 'pc' : 'pcs' }} ({{ (quantity / pcsPerCarton).toFixed(1) }}箱)</div>
+        <div>建议数量: <strong>{{ suggestedQuantity }} {{ suggestedQuantity === 1 ? 'pc' : 'pcs' }}</strong> ({{ suggestedCartons }}箱) 以达到整数箱</div>
       </div>
       <div v-else>当前CBM为 <strong>{{ cbm }}</strong> (超过58)，建议选择整柜运输或联系物流单独确认运费。</div>
     </div>

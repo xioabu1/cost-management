@@ -21,7 +21,7 @@
       </div>
       <div class="review-info-card">
         <div class="review-info-label">订单数量</div>
-        <div class="review-info-value">{{ formatQuantity(quotation.quantity) }} PCS</div>
+        <div class="review-info-value">{{ formatQuantity(quotation.quantity) }} {{ quotation.quantity === 1 ? 'PC' : 'PCS' }}</div>
       </div>
       <div class="review-info-card lg:col-span-2">
         <div class="review-info-label">包装方式</div>

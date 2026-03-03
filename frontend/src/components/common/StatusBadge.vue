@@ -48,7 +48,7 @@ const colors = {
 
 // 业务映射配置
 const configMap = {
-  // 报价单状态
+  // 成本分析状态
   status: {
     draft: { label: '草稿', color: 'slate' },
     submitted: { label: '已提交', color: 'blue' },

@@ -1,6 +1,6 @@
 <template>
   <div class="cost-detail-page"> <!-- 独立详情页容器，不使用弹窗的截断样式 -->
-    <CostPageHeader :title="`报价单详情 ${quotation.quotation_no ? '- ' + quotation.quotation_no : ''}`" :show-back="true" @back="$router.back()">
+    <CostPageHeader :title="`成本分析详情 ${quotation.quotation_no ? '- ' + quotation.quotation_no : ''}`" :show-back="true" @back="$router.back()">
       <template #after-title>
          <div class="flex items-center gap-2 ml-4">
            <StatusBadge type="status" :value="quotation.status" />

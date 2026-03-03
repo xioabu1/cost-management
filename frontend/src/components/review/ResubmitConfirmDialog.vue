@@ -1,7 +1,7 @@
 <template>
   <el-dialog
     :model-value="modelValue"
-    :title="`📤 重新提交报价单  ${quotation?.quotation_no || ''}`"
+    :title="`📤 重新提交成本分析  ${quotation?.quotation_no || ''}`"
     width="500px"
     :close-on-click-modal="false"
     :before-close="handleBeforeClose"
@@ -10,9 +10,9 @@
     <div class="resubmit-content">
       <el-divider />
       
-      <p class="confirm-text">确认将此报价单重新提交审核？</p>
-      
-      <!-- 报价单摘要 -->
+      <p class="confirm-text">确认将此成本分析重新提交审核？</p>
+
+      <!-- 成本分析摘要 -->
       <div class="summary-box">
         <div class="info-line"><span class="label">客户名称:</span><span class="value">{{ quotation?.customer_name }}</span></div>
         <div class="info-line"><span class="label">产品型号:</span><span class="value">{{ quotation?.model_name }}</span></div>
@@ -32,7 +32,7 @@
 
       <!-- 提示 -->
       <div class="hint-text">
-        💡 提示：提交后报价单将进入待审核状态，等待审核人审核
+        💡 提示：提交后成本分析将进入待审核状态，等待审核人审核
       </div>
     </div>
 

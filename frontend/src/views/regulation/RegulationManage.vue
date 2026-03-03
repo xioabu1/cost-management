@@ -131,7 +131,7 @@ const paginatedRegulations = computed(() => {
   return filteredRegulations.value.slice(start, start + pageSize.value)
 })
 
-const form = reactive({ id: null, name: '', description: '', is_active: 1 })
+let form = reactive({ id: null, name: '', description: '', is_active: 1 })
 
 // 法规颜色映射
 const REGULATION_COLORS = { 'NIOSH': '#409EFF', 'GB': '#67C23A', 'CE': '#E6A23C', 'ASNZS': '#F56C6C', 'KN': '#9B59B6' }

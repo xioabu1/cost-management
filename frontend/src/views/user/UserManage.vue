@@ -275,7 +275,7 @@ const isEdit = ref(false);
 const formRef = ref(null);
 
 // 表单
-const form = reactive({
+let form = reactive({
   id: null,
   username: '',
   password: '',

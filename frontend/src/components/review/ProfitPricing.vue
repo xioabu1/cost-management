@@ -1,6 +1,6 @@
 <template>
   <div class="profit-pricing" :class="{ 'compact': compact }">
-    <div class="profit-title" v-if="showTitle">利润报价:</div>
+    <div class="profit-title" v-if="showTitle">利润分析:</div>
     <div class="profit-list" :class="{ 'horizontal': horizontal }">
       <div v-for="item in profitItems" :key="item.rate" class="profit-item">
         <span class="rate">{{ item.rate }}%:</span>

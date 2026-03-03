@@ -23,7 +23,7 @@
             包装：{{ quotation.pc_per_bag || 0 }}片/袋, {{ quotation.bags_per_box || 0 }}袋/盒, {{ quotation.boxes_per_carton || 0 }}盒/箱
           </div>
           <div class="config-quantity">
-            数量：{{ formatNumber(quotation.quantity, 0) }}pcs
+            数量：{{ formatNumber(quotation.quantity, 0) }}{{ quotation.quantity === 1 ? 'pc' : 'pcs' }}
           </div>
           <div class="config-price">
             最终价：<span class="price-value">{{ formatNumber(quotation.sales_type === 'domestic'

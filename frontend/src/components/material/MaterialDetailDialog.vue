@@ -216,7 +216,7 @@ const defaultForm = {
   remark: ''
 }
 
-const form = reactive({ ...defaultForm })
+let form = reactive({ ...defaultForm })
 
 const isEdit = computed(() => !!props.initialData)
 const isHalfMaskView = computed(() => form.material_type === 'half_mask')

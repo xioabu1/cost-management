@@ -32,11 +32,11 @@
         </div>
         <div class="detail-item">
           <div class="detail-label">每箱只数</div>
-          <div class="detail-value">{{ freightCalculation.pcsPerCarton || '-' }} pcs</div>
+          <div class="detail-value">{{ freightCalculation.pcsPerCarton || '-' }} {{ freightCalculation.pcsPerCarton === 1 ? 'pc' : 'pcs' }}</div>
         </div>
         <div class="detail-item">
           <div class="detail-label">本次数量</div>
-          <div class="detail-value">{{ quantity ? Number(quantity).toLocaleString() : '-' }} pcs</div>
+          <div class="detail-value">{{ quantity ? Number(quantity).toLocaleString() : '-' }} {{ quantity === 1 ? 'pc' : 'pcs' }}</div>
         </div>
       </div>
     </div>

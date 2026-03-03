@@ -1,7 +1,7 @@
 <template>
   <el-dialog
     v-model="visible"
-    :title="`📋 报价单详情   ${quotationDetail?.quotation_no || ''}`"
+    :title="`📋 成本分析详情   ${quotationDetail?.quotation_no || ''}`"
     width="850px"
     :close-on-click-modal="false"
     destroy-on-close
@@ -9,7 +9,7 @@
   >
     <template #header="{ titleId, titleClass }">
       <div class="dialog-header">
-        <span :id="titleId" :class="titleClass">📋 报价单详情   {{ quotationDetail?.quotation_no || '' }}</span>
+        <span :id="titleId" :class="titleClass">📋 成本分析详情   {{ quotationDetail?.quotation_no || '' }}</span>
         <div class="header-actions">
           <el-button type="primary" size="small" icon="Download" @click="handleExport">导出</el-button>
         </div>
@@ -35,7 +35,7 @@
               </div>
             </div>
             <div class="summary-card">
-              <div class="card-title">💰 报价信息</div>
+              <div class="card-title">💰 成本分析信息</div>
               <div class="card-content">
                 <div class="info-line final-price">
                   <span class="label">最终价格:</span>
@@ -61,7 +61,7 @@
           <div class="section-title status-approved">✅ 审核结果</div>
           <div class="result-box result-approved">
             <div class="result-icon">✅</div>
-            <div class="result-text">恭喜！该报价单已审核通过</div>
+            <div class="result-text">恭喜！该成本分析已审核通过</div>
           </div>
           <div v-if="reviewComment" class="comment-section">
             <div class="comment-label">审核批注：</div>
@@ -87,7 +87,7 @@
 
         <!-- 注意提示 -->
         <div class="notice-text">
-          ⚠️ 注意：已审核通过的报价单不可修改，如需调整请联系管理员
+          ⚠️ 注意：已审核通过的成本分析不可修改，如需调整请联系管理员
         </div>
       </template>
     </div>
@@ -142,7 +142,7 @@ watch(visible, (val) => {
   emit('update:modelValue', val)
 })
 
-// 利润报价
+// 利润分析
 const profitPricing = computed(() => {
   if (!quotationDetail.value) return []
   return calculateProfitPricing(

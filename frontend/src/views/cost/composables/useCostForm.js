@@ -9,7 +9,7 @@ export function useCostForm() {
     const formRef = ref(null)
 
     // 核心表单数据
-    const form = reactive({
+    let form = reactive({
         regulation_id: null, model_id: null, packaging_config_id: null,
         customer_name: '', customer_region: '', sales_type: 'domestic',
         shipping_method: '', port_type: 'fob_shenzhen', port: '',

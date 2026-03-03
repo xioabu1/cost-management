@@ -43,8 +43,8 @@
       <el-icon><InfoFilled /></el-icon>
       <div class="tip-content">
         <div class="tip-title">智能装箱建议:</div>
-        <div>当前数量: {{ store.form.quantity }} pcs ({{ (store.form.quantity / pcsPerCarton).toFixed(1) }}箱)</div>
-        <div>建议数量: <strong>{{ suggestedQuantity }} pcs</strong> ({{ suggestedCartons }}箱) 以达到整数箱</div>
+        <div>当前数量: {{ store.form.quantity }} {{ store.form.quantity === 1 ? 'pc' : 'pcs' }} ({{ (store.form.quantity / pcsPerCarton).toFixed(1) }}箱)</div>
+        <div>建议数量: <strong>{{ suggestedQuantity }} {{ suggestedQuantity === 1 ? 'pc' : 'pcs' }}</strong> ({{ suggestedCartons }}箱) 以达到整数箱</div>
       </div>
     </div>
 

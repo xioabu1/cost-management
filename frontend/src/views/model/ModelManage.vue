@@ -232,7 +232,7 @@ const paginatedModels = computed(() => {
 
 watch(viewMode, (newMode) => { if (newMode === 'card') selectedModels.value = [] })
 
-const form = reactive({ id: null, regulation_id: null, model_name: '', model_category: '', model_series: '', is_active: 1 })
+let form = reactive({ id: null, regulation_id: null, model_name: '', model_category: '', model_series: '', is_active: 1 })
 const formRules = {
   regulation_id: [{ required: true, message: '请选择法规类别', trigger: 'change' }],
   model_name: [{ required: true, message: '请输入型号名称', trigger: 'blur' }],

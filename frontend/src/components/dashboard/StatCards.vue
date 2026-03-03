@@ -219,7 +219,7 @@
 
     <!-- 模式 C: 运营概览 (管理员) - 恢复原版 -->
     <template v-else>
-      <!-- 卡片 1: 本月报价单 -->
+      <!-- 卡片 1: 本月成本分析 -->
       <div class="stat-card stat-card-primary group">
         <div class="p-3 sm:p-5 flex-1 relative">
           <div class="flex items-start justify-between mb-2 sm:mb-3">
@@ -236,7 +236,7 @@
               <span class="stat-value text-slate-800">{{ (stats.monthlyQuotations || 0).toLocaleString() }}</span>
               <span class="stat-unit text-slate-500">单</span>
             </div>
-            <h3 class="stat-label text-slate-600 mt-1">本月报价单</h3>
+            <h3 class="stat-label text-slate-600 mt-1">本月成本分析</h3>
           </div>
         </div>
         <div class="stat-footer bg-blue-50/50 border-t border-blue-100">

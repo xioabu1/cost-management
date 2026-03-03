@@ -1,7 +1,7 @@
 <template>
   <el-dialog
     :model-value="modelValue"
-    :title="`📋 报价单详情   ${quotationDetail?.quotation_no || ''}`"
+    :title="`📋 成本分析详情   ${quotationDetail?.quotation_no || ''}`"
     width="850px"
     top="5vh"
     :close-on-click-modal="false"
@@ -11,7 +11,7 @@
   >
     <template #header="{ titleId, titleClass }">
       <div class="dialog-header">
-        <span :id="titleId" :class="titleClass">📋 报价单详情   {{ quotationDetail?.quotation_no || '' }}</span>
+        <span :id="titleId" :class="titleClass">📋 成本分析详情   {{ quotationDetail?.quotation_no || '' }}</span>
         <div class="header-actions">
           <el-button type="primary" size="small" @click="handleEdit">编辑</el-button>
           <el-button type="success" size="small" @click="handleResubmit">重新提交</el-button>
@@ -25,7 +25,7 @@
         <div class="section warning-section">
           <div class="section-title warning-title">⚠️ 退回通知</div>
           <div class="warning-content">
-            <p class="warning-text">该报价单已被退回，请根据以下原因修改后重新提交</p>
+            <p class="warning-text">该成本分析已被退回，请根据以下原因修改后重新提交</p>
             <div class="reason-box">
               <div class="reason-label">退回原因：</div>
               <div class="reason-content">{{ rejectReason || '无' }}</div>

@@ -11,11 +11,11 @@ const CRITICAL_OPERATIONS = [
     { method: 'POST', path: '/api/auth/login', action: '用户登录' },
     { method: 'POST', path: '/api/auth/change-password', action: '修改密码' },
 
-    // 报价单操作
-    { method: 'POST', path: '/api/cost/quotations', action: '创建报价单' },
-    { method: 'PUT', path: '/api/cost/quotations', action: '更新报价单' },
-    { method: 'DELETE', path: '/api/cost/quotations', action: '删除报价单' },
-    { method: 'POST', path: '/api/cost/quotations/*/submit', action: '提交报价单' },
+    // 成本分析操作
+    { method: 'POST', path: '/api/cost/quotations', action: '创建成本分析' },
+    { method: 'PUT', path: '/api/cost/quotations', action: '更新成本分析' },
+    { method: 'DELETE', path: '/api/cost/quotations', action: '删除成本分析' },
+    { method: 'POST', path: '/api/cost/quotations/*/submit', action: '提交成本分析' },
 
     // 审批操作
     { method: 'POST', path: '/api/review/approve', action: '审批通过' },

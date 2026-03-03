@@ -1,7 +1,7 @@
 <template>
   <el-dialog
     :model-value="modelValue"
-    title="报价单审核"
+    title="成本分析审核"
     width="900px"
     top="5vh"
     :close-on-click-modal="false"
@@ -296,10 +296,10 @@
     <template #footer>
       <div class="review-dialog-footer">
         <div v-if="isOwnQuotation" class="review-self-warning">
-          <el-alert title="不能审核自己创建的报价单" type="warning" :closable="false" show-icon />
+          <el-alert title="不能审核自己创建的成本分析" type="warning" :closable="false" show-icon />
         </div>
         <template v-else>
-          <el-button type="danger" @click="handleReject" :loading="submitting">退回报价</el-button>
+          <el-button type="danger" @click="handleReject" :loading="submitting">退回成本分析</el-button>
           <el-button type="success" @click="handleApprove" :loading="submitting">审核通过</el-button>
         </template>
       </div>

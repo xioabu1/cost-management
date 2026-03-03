@@ -23,7 +23,7 @@
               </div>
               <div class="info-row">
                 <span class="info-label">数量：</span>
-                <span class="info-value">{{ formatNumber(quotation.quantity, 0) }}pcs</span>
+                <span class="info-value">{{ formatNumber(quotation.quantity, 0) }}{{ quotation.quantity === 1 ? 'pc' : 'pcs' }}</span>
               </div>
               <div class="info-row">
                 <span class="info-label">报价单号：</span>

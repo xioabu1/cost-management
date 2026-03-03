@@ -10,7 +10,7 @@
     <div class="approve-content">
       <el-divider />
       
-      <!-- 报价单摘要 -->
+      <!-- 成本分析摘要 -->
       <div class="summary-info">
         <div class="info-line"><span class="label">客户名称:</span><span class="value">{{ quotation?.customer_name }}</span></div>
         <div class="info-line"><span class="label">客户地区:</span><span class="value">{{ quotation?.customer_region || '-' }}</span></div>

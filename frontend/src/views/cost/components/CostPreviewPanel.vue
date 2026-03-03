@@ -31,6 +31,11 @@
         </div>
       </div>
       <div v-if="calculation.afterOverheadMaterialTotal > 0" class="preview-tip">管销后原料: <strong>{{ formatNumber(calculation.afterOverheadMaterialTotal) }}</strong></div>
+      <!-- 运费计入成本提示 -->
+      <div class="preview-freight-notice" :class="{ 'included': includeFreightInBase }">
+        <el-icon><InfoFilled /></el-icon>
+        <span>{{ includeFreightInBase ? '运费已计入基础成本' : '运费在管销价基础上单独计算' }}</span>
+      </div>
     </div>
 
     <!-- 最终成本价 -->
@@ -87,8 +92,8 @@
     <!-- 操作按钮 -->
     <div class="preview-actions">
       <div class="preview-actions-row">
-        <el-button @click="$emit('saveDraft')" :loading="saving" class="action-draft">
-          <el-icon><FolderAdd /></el-icon>草稿
+        <el-button type="success" @click="$emit('saveDraft')" :loading="saving" class="action-draft" plain>
+          <el-icon><FolderAdd /></el-icon>保存草稿
         </el-button>
         <el-button type="primary" @click="$emit('submit')" :loading="submitting" class="action-submit">
           <el-icon><Promotion /></el-icon>提交审核
@@ -162,8 +167,31 @@ const setSliderFromTier = (tier) => { sliderProfitRate.value = parseInt(tier.pro
 .preview-empty { background: #fff; border: 1px dashed #e4e7ed; border-radius: 10px; padding: 40px 20px; text-align: center; display: flex; flex-direction: column; align-items: center; }
 .preview-actions { display: flex; flex-direction: column; gap: 10px; padding: 14px; background: #fff; border: 1px solid #e4e7ed; border-radius: 10px; }
 .preview-actions-row { display: flex; gap: 8px; }
-.action-draft { flex: 1; height: 40px; border: 1px solid #dcdfe6; background: #f8fafc; color: #475569; font-weight: 500; }
-.action-draft:hover { background: #f1f5f9; border-color: #c0c4cc; }
+/* 运费提示样式 */
+.preview-freight-notice {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 10px;
+  padding: 10px 12px;
+  background: #fff7e6;
+  border: 1px solid #ffd591;
+  border-radius: 6px;
+  font-size: 13px;
+  color: #ad6800;
+  transition: all 0.2s;
+}
+.preview-freight-notice.included {
+  background: #e6f7ff;
+  border-color: #91d5ff;
+  color: #096dd9;
+}
+.preview-freight-notice .el-icon {
+  font-size: 16px;
+}
+
+.action-draft { flex: 1; height: 40px; font-weight: 500; border-width: 2px; }
+.action-draft:hover { opacity: 0.9; transform: translateY(-1px); box-shadow: 0 4px 12px rgba(103, 194, 58, 0.3); }
 .action-submit { flex: 2; height: 40px; font-weight: 600; background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%); border: none; }
 .action-submit:hover { background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%); }
 .action-cancel { color: #94a3b8; font-size: 13px; }

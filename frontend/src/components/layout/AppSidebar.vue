@@ -222,7 +222,7 @@ const isActive = (menuId) => {
     }
     // 普通路由匹配（排除带mode参数的情况）
     if (currentPath === item.route) {
-      return !currentQuery.mode // 只有没有mode参数时才匹配普通新增报价
+      return !currentQuery.mode // 只有没有mode参数时才匹配普通新增成本分析
     }
     return currentPath.startsWith(item.route + '/')
   }

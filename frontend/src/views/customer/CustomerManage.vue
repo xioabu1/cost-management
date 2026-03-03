@@ -114,7 +114,7 @@ const searchKeyword = ref('')
 const { currentPage, pageSize, total } = usePagination('customer')
 const searchTimer = ref(null)
 
-const form = reactive({ id: null, vc_code: '', name: '', region: '', remark: '', user_id: null })
+let form = reactive({ id: null, vc_code: '', name: '', region: '', remark: '', user_id: null })
 const formRef = ref(null)
 const formRules = {
   vc_code: [{ required: true, message: '请输入VC号', trigger: 'blur' }],

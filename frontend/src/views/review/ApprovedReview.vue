@@ -7,7 +7,7 @@
       <div class="filter-bar">
         <el-input
           v-model="searchKeyword"
-          placeholder="搜索报价单编号、客户名称、型号"
+          placeholder="搜索成本分析编号、客户名称、型号"
           clearable
           @input="handleSearch"
           @clear="handleClearSearch"
@@ -22,7 +22,7 @@
       <!-- 桌面端数据表格 -->
       <el-table :data="tableData" border v-loading="loading" style="width: 100%" class="hidden md:block" @selection-change="handleSelectionChange">
         <el-table-column type="selection" width="55" />
-        <el-table-column prop="quotation_no" label="报价单编号" width="160" />
+        <el-table-column prop="quotation_no" label="成本分析编号" width="160" />
         <el-table-column prop="status" label="状态" width="100">
           <template #default="{ row }">
             <StatusBadge type="status" :value="row.status" />
@@ -221,7 +221,7 @@ const handleView = (row) => {
 const handleDelete = async (row) => {
   try {
     await ElMessageBox.confirm(
-      `确定要删除报价单 ${row.quotation_no} 吗？此操作不可恢复。`,
+      `确定要删除成本分析 ${row.quotation_no} 吗？此操作不可恢复。`,
       '删除确认',
       { type: 'warning' }
     )

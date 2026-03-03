@@ -6,6 +6,7 @@ const logger = require('../../utils/logger');
 const Quotation = require('../../models/Quotation');
 const QuotationItem = require('../../models/QuotationItem');
 const Comment = require('../../models/Comment');
+const StandardCost = require('../../models/StandardCost');  // 引入标准成本模型
 const { success, error, paginated } = require('../../utils/response');
 const dbManager = require('../../db/database');
 const { formatPackagingMethod } = require('../../config/packagingTypes');
@@ -409,12 +410,25 @@ const resubmitQuotation = async (req, res) => {
 const deleteQuotation = async (req, res) => {
   try {
     const { id } = req.params;
-    
+
     if (req.user.role !== 'admin') return res.status(403).json(error('只有管理员才能删除报价单', 403));
-    
+
     const quotation = await Quotation.findById(id);
     if (!quotation) return res.status(404).json(error('报价单不存在', 404));
-    
+
+    // 检查该报价单是否已被设为标准成本且被其他报价单引用
+    const standardCost = await StandardCost.findByQuotationId(id);
+    if (standardCost) {
+      // 检查是否有其他报价单引用了此标准成本
+      const referenceCheck = await dbManager.query(
+        'SELECT COUNT(*) as count FROM quotations WHERE reference_standard_cost_id = $1',
+        [standardCost.id]
+      );
+      if (parseInt(referenceCheck.rows[0].count) > 0) {
+        return res.status(400).json(error('该报价单已被业务员复制引用，无法删除', 400));
+      }
+    }
+
     await dbManager.query('DELETE FROM quotations WHERE id = $1', [id]);
     res.json(success({ message: '删除成功' }));
   } catch (err) {

@@ -156,12 +156,14 @@ export function formatAmount(amount, currency = 'CNY', decimals = 4) {
 /**
  * 格式化数量（带单位）
  * @param {number} quantity - 数量
- * @param {string} unit - 单位
+ * @param {string} unit - 单位（可选，不传则根据数量自动判断）
  * @returns {string} 格式化后的数量
  */
-export function formatQuantity(quantity, unit = 'PCS') {
+export function formatQuantity(quantity, unit = '') {
   if (quantity === null || quantity === undefined) return '-'
-  return `${quantity.toLocaleString()} ${unit}`
+  // 根据数量自动判断单位：1用PC，其他用PCS
+  const autoUnit = unit || (quantity === 1 ? 'PC' : 'PCS')
+  return `${quantity.toLocaleString()} ${autoUnit}`
 }
 
 /**

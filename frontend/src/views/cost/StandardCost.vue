@@ -60,7 +60,7 @@
       <div class="filter-bar">
         <el-input
           v-model="searchKeyword"
-          placeholder="搜索型号、包装配置、报价单号"
+          placeholder="搜索型号、包装配置、成本分析号"
           clearable
           @input="handleSearch"
           @clear="handleClearSearch"
@@ -81,7 +81,7 @@
       <!-- 标准成本表格 -->
       <el-table :data="standardCosts" border v-loading="loading" @selection-change="handleSelectionChange">
         <el-table-column type="selection" width="55" />
-        <el-table-column prop="quotation_no" label="报价单编号" width="150">
+        <el-table-column prop="quotation_no" label="成本分析编号" width="150">
           <template #default="{ row }">
             <span v-if="row.quotation_no">{{ row.quotation_no }}</span>
             <span v-else style="color: #909399;">-</span>
@@ -278,7 +278,7 @@ watch([currentPage, pageSize], () => {
   loadStandardCosts()
 })
 
-// 查看关联的报价单
+// 查看关联的成本分析
 const viewQuotation = (row) => {
   if (row.quotation_id) {
     router.push(`/cost/detail/${row.quotation_id}`)

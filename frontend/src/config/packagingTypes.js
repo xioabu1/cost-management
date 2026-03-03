@@ -93,7 +93,7 @@ export function getPackagingTypeName(type) {
 export function formatPackagingMethod(type, layer1, layer2, layer3) {
   const config = PACKAGING_TYPES[type]
   if (!config) return ''
-  
+
   if (config.layers === 2) {
     return `${layer1}${config.labels[0]}, ${layer2}${config.labels[1]}`
   } else {

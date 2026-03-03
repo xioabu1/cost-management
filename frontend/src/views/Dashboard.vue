@@ -287,7 +287,7 @@ const getStorageKey = () => {
 
 // 所有可选的导航选项
 const allNavOptions = [
-  { key: 'cost-add', label: '新增报价', icon: 'ri-add-line', iconBgColor: 'bg-blue-100', iconColor: 'text-primary-600', route: '/cost/add', roles: ['admin', 'reviewer', 'salesperson', 'readonly'] },
+  { key: 'cost-add', label: '新增成本分析', icon: 'ri-add-line', iconBgColor: 'bg-blue-100', iconColor: 'text-primary-600', route: '/cost/add', roles: ['admin', 'reviewer', 'salesperson', 'readonly'] },
   { key: 'cost-standard', label: '标准成本', icon: 'ri-file-list-3-line', iconBgColor: 'bg-purple-100', iconColor: 'text-purple-600', route: '/cost/standard', roles: ['admin', 'reviewer', 'salesperson', 'readonly'] },
   { key: 'cost-records', label: '成本记录', icon: 'ri-history-line', iconBgColor: 'bg-green-100', iconColor: 'text-green-600', route: '/cost/records', roles: ['admin', 'reviewer', 'salesperson', 'readonly'] },
   { key: 'review-pending', label: '待审核', icon: 'ri-time-line', iconBgColor: 'bg-orange-100', iconColor: 'text-orange-600', route: '/review/pending', roles: ['admin', 'reviewer', 'salesperson'] },

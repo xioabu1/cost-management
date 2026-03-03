@@ -42,7 +42,7 @@
 
       <!-- 价格信息卡片 -->
       <div class="summary-card">
-        <div class="card-title">💰 {{ viewMode === 'simple' ? '价格信息' : '报价信息' }}</div>
+        <div class="card-title">💰 {{ viewMode === 'simple' ? '价格信息' : '成本分析信息' }}</div>
         <div class="card-content">
           <!-- 完整视图显示成本价和管销价 -->
           <template v-if="viewMode === 'full'">
@@ -60,10 +60,10 @@
             <span class="value highlight">{{ formatAmount(quotation?.final_price, quotation?.currency) }}</span>
           </div>
           
-          <!-- 利润报价 -->
+          <!-- 利润分析 -->
           <div class="profit-section" v-if="showProfitPricing && profitPricing.length > 0">
             <div class="profit-divider"></div>
-            <div class="profit-title">利润报价:</div>
+            <div class="profit-title">利润分析:</div>
             <div class="profit-list">
               <div v-for="item in profitPricing" :key="item.rate" class="profit-item">
                 {{ item.rate }}%: {{ item.price.toFixed(4) }} {{ item.currency }}
@@ -96,7 +96,7 @@ const props = defineProps({
   }
 })
 
-// 利润报价计算
+// 利润分析计算
 const profitPricing = computed(() => {
   if (!props.quotation || !props.showProfitPricing) return []
   return calculateProfitPricing(

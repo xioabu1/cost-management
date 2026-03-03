@@ -470,11 +470,11 @@ const handleRemoveCustomFee = (index) => removeCustomFee(index, handleCalculateC
 
 // Computed: Page Title
 const pageTitle = computed(() => {
-  if (route.params.id) return '编辑报价单'
-  if (route.query.copyFrom) return '复制报价单'
+  if (route.params.id) return '编辑成本分析'
+  if (route.query.copyFrom) return '复制成本分析'
   if (isEstimationMode.value) return '新产品成本预估'
-  if (currentModelCategory.value) return '新增报价单 - ' + currentModelCategory.value
-  return '新增报价单'
+  if (currentModelCategory.value) return '新增成本分析 - ' + currentModelCategory.value
+  return '新增成本分析'
 })
 
 // Computed Helpers
@@ -554,7 +554,7 @@ const resetForm = () => {
 const handleCancel = async () => {
   if (!hasFormData.value) return
   try {
-    await ElMessageBox.confirm('确定要取消当前报价填写吗？已填写的内容将被清除。', '取消报价', { confirmButtonText: '确定取消', cancelButtonText: '继续填写', type: 'warning' })
+    await ElMessageBox.confirm('确定要取消当前成本分析填写吗？已填写的内容将被清除。', '取消成本分析', { confirmButtonText: '确定取消', cancelButtonText: '继续填写', type: 'warning' })
     resetForm()
     clearDraft()
     ElMessage.success('已清除填写内容')
@@ -619,7 +619,7 @@ onBeforeRouteLeave(async (to, from, next) => {
   stopAutoSave()
   if (isSaved.value || !hasFormData.value || route.params.id) { next(); return }
   try {
-    await ElMessageBox.confirm('是否保存为草稿以便下次继续？', '您有未保存的报价数据', { distinguishCancelAndClose: true, confirmButtonText: '保存草稿', cancelButtonText: '放弃', type: 'warning' })
+    await ElMessageBox.confirm('是否保存为草稿以便下次继续？', '您有未保存的成本分析数据', { distinguishCancelAndClose: true, confirmButtonText: '保存草稿', cancelButtonText: '放弃', type: 'warning' })
     const { form: f, extras } = getFormDataForDraft()
     saveDraft(f, extras)
     ElMessage.success('草稿已保存')

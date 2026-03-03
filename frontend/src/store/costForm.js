@@ -1,5 +1,5 @@
 /**
- * 成本报价单表单 Store
+ * 成本分析表单 Store
  * 集中管理 CostAdd.vue 的表单状态
  */
 import { defineStore } from 'pinia'
@@ -7,7 +7,7 @@ import { reactive, computed, ref } from 'vue'
 
 export const useCostFormStore = defineStore('costForm', () => {
   // ========== 基础表单状态 ==========
-  const form = reactive({
+  let form = reactive({
     customer_name: '',
     customer_region: '',
     model_id: null,

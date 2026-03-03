@@ -76,7 +76,7 @@ export function usePackagingManage() {
   const formRef = ref(null);
 
   // 表单
-  const form = reactive({
+  let form = reactive({
     id: null,
     model_id: null,
     config_name: '',

@@ -5,7 +5,7 @@
         <ActionButton type="compare" @click="goToCompare" :disabled="selectedQuotations.length < 2">
           对比模式 ({{ selectedQuotations.length }})
         </ActionButton>
-        <ActionButton v-if="!isRestrictedRole" type="add" @click="showCategoryModal">新增报价单</ActionButton>
+        <ActionButton v-if="!isRestrictedRole" type="add" @click="showCategoryModal">新增成本分析</ActionButton>
       </template>
     </CostPageHeader>
 
@@ -20,7 +20,7 @@
       <div class="filter-bar">
         <el-input
           v-model="searchKeyword"
-          placeholder="搜索报价单编号、客户名称、型号"
+          placeholder="搜索成本分析编号、客户名称、型号"
           clearable
           @input="handleSearch"
           @clear="handleClearSearch"
@@ -65,7 +65,7 @@
       <!-- 桌面端数据表格 -->
       <el-table :data="tableData" border v-loading="loading" @selection-change="handleSelectionChange" style="width: 100%" class="hidden md:block">
         <el-table-column type="selection" width="55" :selectable="checkSelectable" />
-        <el-table-column prop="quotation_no" label="报价单编号" width="180">
+        <el-table-column prop="quotation_no" label="成本分析编号" width="180">
           <template #default="{ row }">
             <div class="quotation-no-cell">
               <span>{{ row.quotation_no }}</span>
@@ -258,8 +258,8 @@ const fetchQuotations = async () => {
       total.value = res.total
     }
   } catch (error) {
-    logger.error('加载报价单列表失败:', error)
-    ElMessage.error('加载报价单列表失败')
+    logger.error('加载成本分析列表失败:', error)
+    ElMessage.error('加载成本分析列表失败')
   } finally {
     loading.value = false
   }
@@ -334,15 +334,15 @@ const viewDetail = (id) => {
   router.push(`/cost/detail/${id}`)
 }
 
-// 编辑报价单
+// 编辑成本分析
 const editQuotation = (id) => {
   router.push(`/cost/edit/${id}`)
 }
 
-// 复制报价单
+// 复制成本分析
 const copyQuotation = async (id) => {
   try {
-    await ElMessageBox.confirm('确定要复制这个报价单吗？', '提示', {
+    await ElMessageBox.confirm('确定要复制这个成本分析吗？', '提示', {
       confirmButtonText: '确定',
       cancelButtonText: '取消',
       type: 'info'
@@ -355,7 +355,7 @@ const copyQuotation = async (id) => {
         path: '/cost/add',
         query: { copyFrom: id }
       })
-      ElMessage.success('正在复制报价单...')
+      ElMessage.success('正在复制成本分析...')
     }
   } catch (error) {
     if (error !== 'cancel') {
@@ -365,10 +365,10 @@ const copyQuotation = async (id) => {
   }
 }
 
-// 删除报价单
+// 删除成本分析
 const deleteQuotation = async (id) => {
   try {
-    await ElMessageBox.confirm('确定要删除这个报价单吗？', '提示', {
+    await ElMessageBox.confirm('确定要删除这个成本分析吗？', '提示', {
       confirmButtonText: '确定',
       cancelButtonText: '取消',
       type: 'warning'
@@ -401,12 +401,12 @@ const checkSelectable = (row) => {
 // 进入对比模式
 const goToCompare = () => {
   if (selectedQuotations.value.length < 2) {
-    ElMessage.warning('请至少选择2个报价单进行对比')
+    ElMessage.warning('请至少选择2个成本分析进行对比')
     return
   }
-  
+
   if (selectedQuotations.value.length > 4) {
-    ElMessage.warning('最多只能同时对比4个报价单')
+    ElMessage.warning('最多只能同时对比4个成本分析')
     return
   }
   
@@ -482,7 +482,7 @@ onUnmounted(() => {
   border-color: #f78989;
 }
 
-/* 报价单编号单元格 */
+/* 成本分析编号单元格 */
 .quotation-no-cell {
   display: flex;
   align-items: center;

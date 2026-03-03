@@ -244,7 +244,7 @@ const defaultForm = {
   processes: []
 }
 
-const form = reactive({ ...defaultForm })
+let form = reactive({ ...defaultForm })
 const isEdit = computed(() => !!props.initialData)
 
 // Computed
