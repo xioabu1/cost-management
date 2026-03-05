@@ -54,7 +54,8 @@
       "Bash(git pull:*)",
       "Bash(git merge:*)",
       "Bash(ls .env*:*)",
-      "Bash(ls:*)"
+      "Bash(ls:*)",
+      "Skill(planning-with-files)"
     ]
   }
 }
