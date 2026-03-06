@@ -2,7 +2,7 @@
   <el-dropdown
     trigger="click"
     popper-class="notification-dropdown"
-    :teleported="true"
+    :teleported="false"
     @visible-change="(visible) => { isOpen = visible; if (visible) fetchNotifications() }"
   >
     <div
@@ -117,7 +117,10 @@
 
 <script setup>
 import { ref, computed, onMounted } from 'vue'
+import { useRouter } from 'vue-router'
 import request from '@/utils/request'
+
+const router = useRouter()  // 路由实例，用于跳转
 
 // 通知相关状态
 const notificationCount = ref(0)
@@ -180,10 +183,11 @@ const fetchNotifications = async () => {
   try {
     const response = await request.get('/dashboard/recent-activities')
     if (response.success) {
-      // 为每条通知添加智能判断的类型
+      // 为每条通知添加智能判断的类型，同时保留后端返回的entityType
       notificationList.value = (response.data || []).map(item => ({
         ...item,
-        type: detectNotificationType(item)
+        entityType: item.type,  // 保留后端返回的类型（quotation/material）
+        type: detectNotificationType(item)  // UI展示类型
       }))
       notificationCount.value = notificationList.value.length
       // 检查是否还有更多
@@ -332,14 +336,19 @@ const getNotificationContentClass = (item) => {
 
 // 处理通知点击
 const handleNotificationClick = (item) => {
-  const id = item.id || item.content
-  if (!readNotificationIds.value.has(id)) {
-    readNotificationIds.value.add(id)
+  // 标记已读（使用 id 或 content 作为唯一标识）
+  const readId = item.id || item.content
+  if (!readNotificationIds.value.has(readId)) {
+    readNotificationIds.value.add(readId)
     saveReadNotifications()
   }
 
-  // 如果通知有跳转链接，可以在这里处理
-  // if (item.link) { router.push(item.link) }
+  // 根据实体类型跳转到对应页面
+  if (item.entityType === 'quotation' && item.id) {
+    router.push(`/cost/detail/${item.id}`)
+  } else if (item.entityType === 'material') {
+    router.push('/materials')
+  }
 }
 
 // 从localStorage加载已读记录
